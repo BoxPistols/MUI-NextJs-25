@@ -9,9 +9,12 @@ import { useColorScheme } from '@mui/material/styles';
 
 export default function ModeSwitch() {
   const { mode, setMode } = useColorScheme();
-  if (!mode) {
-    return null;
-  }
+  const [localMode, setLocalMode] = React.useState('system');
+  
+  React.useEffect(() => {
+    setLocalMode(mode || 'system');
+  }, [mode]);
+  
   return (
     <Box
       sx={{
@@ -26,8 +29,14 @@ export default function ModeSwitch() {
         <Select
           labelId="mode-select-label"
           id="mode-select"
-          value={mode}
-          onChange={(event) => setMode(event.target.value as typeof mode)}
+          value={localMode}
+          onChange={(event) => {
+            const newMode = event.target.value as typeof mode | undefined;
+            if (newMode !== undefined) {
+              setLocalMode(newMode);
+              setMode(newMode);
+            }
+          }}
           label="Theme"
         >
           <MenuItem value="system">System</MenuItem>
