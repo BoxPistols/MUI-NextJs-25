@@ -9,9 +9,19 @@ const roboto = Roboto({
 });
 
 const theme = createTheme({
-  colorSchemes: { light: true, dark: true },
-  cssVariables: {
-    colorSchemeSelector: 'class',
+  palette: {
+    mode: 'light',
+    primary: {
+      main: '#1976d2',
+    },
+    background: {
+      default: '#ffffff',
+      paper: '#f5f5f5',
+    },
+    text: {
+      primary: '#000000',
+      secondary: '#555555',
+    },
   },
   typography: {
     fontFamily: roboto.style.fontFamily,
