@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss' with { 'resolution-mode': 'import' }
 
 const config: Config = {
   content: [
@@ -11,6 +11,7 @@ const config: Config = {
     extend: {
       colors: {
         // Primary colors
+
         primary: {
           50: '#e3f2fd',
           100: '#bbdefb',
